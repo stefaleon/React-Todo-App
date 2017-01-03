@@ -1,0 +1,28 @@
+.top-bar, .top-bar ul {
+    background-color: $nav-background
+}
+
+.top-bar {
+
+    // setr the navbar to center
+    text-align:center;
+    .top-bar-centered {
+        display: inline-block;
+    }
+
+    .menu-text {
+        color: $nav-text-color
+    }
+
+    .active {
+        font-weight: bold;
+    }
+
+    a {
+        color: $lightblue;
+    }
+
+    a:hover {
+        color: white
+    }
+}
