@@ -1,5 +1,6 @@
 const React = require('react');
 const TodoList = require('TodoList');
+const AddTodo = require('AddTodo');
 
 const TodoApp = React.createClass({
     getInitialState: function () {
@@ -34,7 +35,9 @@ const TodoApp = React.createClass({
     componentWillUnmount: function () {
         // console.log('component did unmount');
     },
-
+    handleAddTodo: function (text) {
+        alert('new todo: ' + text);
+    },
     render: function () {
         var {todos} = this.state;
 
@@ -42,6 +45,7 @@ const TodoApp = React.createClass({
             <div className='page-title'>
                 <h1 >This is the Todo App</h1>
                 <TodoList todos={todos} />
+                <AddTodo onAddTodo = {this.handleAddTodo} />
              </div>
         );
     }
