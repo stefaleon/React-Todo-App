@@ -2,6 +2,7 @@ const React = require('react');
 const TodoList = require('TodoList');
 const AddTodo = require('AddTodo');
 const TodoSearch = require('TodoSearch');
+const uuid = require('uuid');
 
 const TodoApp = React.createClass({
     getInitialState: function () {
@@ -10,11 +11,11 @@ const TodoApp = React.createClass({
             searchText: '',
             todos: [
                 {
-                    id: 1,
+                    id: uuid(),
                     text: 'Feed the cat'
                 },
                 {
-                    id: 2,
+                    id: uuid(),
                     text: 'Buy milk'
                 }
             ]
@@ -39,7 +40,15 @@ const TodoApp = React.createClass({
         // console.log('component did unmount');
     },
     handleAddTodo: function (text) {
-        alert('new todo: ' + text);
+        this.setState({
+            todos: [
+                ...this.state.todos,
+                {
+                    id: uuid(),
+                    text: text
+                }
+            ]
+        });
     },
     handleSearch: function (showCompleted, searchText) {
         this.setState({
