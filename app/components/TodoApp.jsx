@@ -12,32 +12,16 @@ const TodoApp = React.createClass({
             todos: [
                 {
                     id: uuid(),
-                    text: 'Feed the cat'
+                    text: 'Feed the cat',
+                    completed: false
                 },
                 {
                     id: uuid(),
-                    text: 'Buy milk'
+                    text: 'Buy milk',
+                    completed: true
                 }
             ]
         };
-    },
-    componentDidUpdate: function (prevProps, prevState) {
-        console.log('componentDidUpdate');
-    },
-    componentWillUpdate: function (nextProps, nextState) {
-        // console.log('componentWillUpdate');
-    },
-    componentWillMount: function () {
-        // console.log('componentWillMount');
-    },
-    componentDidMount: function () {
-        console.log('componentDidMount');
-        console.log('refs:', this.refs);
-        console.log('props:', this.props);
-        //console.log('state:',this.state);
-    },
-    componentWillUnmount: function () {
-        // console.log('component did unmount');
     },
     handleAddTodo: function (text) {
         this.setState({
@@ -45,12 +29,23 @@ const TodoApp = React.createClass({
                 ...this.state.todos,
                 {
                     id: uuid(),
-                    text: text
+                    text: text,
+                    completed: false
                 }
             ]
         });
     },
-    handleSearch: function (showCompleted, searchText) {
+    handleToggle: function (id) {
+        //alert(id);
+        var updatedTodos = this.state.todos.map((todo) => {
+            if (todo.id === id) {
+                todo.completed = !todo.completed;
+            }
+            return todo;
+        });
+        this.setState({todos: updatedTodos});
+    },
+     handleSearch: function (showCompleted, searchText) {
         this.setState({
             showCompleted: showCompleted,
             searchText: searchText.toLowerCase()
@@ -62,8 +57,7 @@ const TodoApp = React.createClass({
         return (
             <div className='page-title'>
                 <TodoSearch onSearch={this.handleSearch} />
-                <h1 >This is the Todo App</h1>
-                <TodoList todos={todos} />
+                <TodoList todos={todos} onToggle={this.handleToggle} />
                 <AddTodo onAddTodo = {this.handleAddTodo} />
              </div>
         );
