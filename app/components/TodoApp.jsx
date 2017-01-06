@@ -40,7 +40,9 @@ const TodoApp = React.createClass({
         });
         this.setState({todos: updatedTodos});
     },
-     handleSearch: function (showCompleted, searchText) {
+    handleSearch: function (showCompleted, searchText) {
+        console.log("handleSearch called, showCompleted:", showCompleted);
+        console.log("handleSearch called, searchText:", searchText);
         this.setState({
             showCompleted: showCompleted,
             searchText: searchText.toLowerCase()
