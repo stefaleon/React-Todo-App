@@ -10,7 +10,7 @@
 * react-router
 * axios
 * uuid
-
+* moment
 
 ### devDependencies
 
