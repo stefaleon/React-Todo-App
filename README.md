@@ -20,6 +20,7 @@
 * babel-preset-es2015
 * babel-preset-react
 
+
 ##### Styling
 * css-loader
 * script-loader
@@ -39,3 +40,4 @@
 * karma-webpack
 * mocha
 * react-addons-test-utils
+* deep-freeze-strict
