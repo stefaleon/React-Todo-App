@@ -5,6 +5,16 @@ const Main = require('Main');
 const About = require('About');
 const TodoApp = require('TodoApp');
 
+const actions = require('actions');
+const store = require('configureStore').configure();
+
+store.subscribe(() => {
+    console.log('New state', store.getState());
+});
+
+store.dispatch(actions.addTodo('Eat a carrot'));
+store.dispatch(actions.setSearchText('carrot'));
+store.dispatch(actions.toggleShowCompleted());
 
 // Load foundation
 $(document).foundation();
