@@ -33,17 +33,6 @@ const TodoApp = React.createClass({
             ]
         });
     },
-    handleToggle: function (id) {
-        //alert(id);
-        var updatedTodos = this.state.todos.map((todo) => {
-            if (todo.id === id) {
-                todo.completed = !todo.completed;
-                todo.completedAt = todo.completed ? moment().unix() : undefined;
-            }
-            return todo;
-        });
-        this.setState({todos: updatedTodos});
-    },
     handleSearch: function (showCompleted, searchText) {
         console.log("handleSearch called, showCompleted:", showCompleted);
         console.log("handleSearch called, searchText:", searchText);
@@ -59,7 +48,7 @@ const TodoApp = React.createClass({
         return (
             <div className='page-title'>
                 <TodoSearch onSearch={this.handleSearch} />
-                <TodoList todos={filteredTodos} onToggle={this.handleToggle} />
+                <TodoList />
                 <AddTodo onAddTodo = {this.handleAddTodo} />
              </div>
         );
