@@ -1,8 +1,8 @@
 const React = require('react');
 const {connect} = require('react-redux');
-const Todo = require('Todo');
+import Todo from 'Todo';
 
-const TodoList = React.createClass({
+export const TodoList = React.createClass({
     render: function () {
         var {todos} = this.props;
         var renderTodos = () => {
@@ -29,7 +29,7 @@ const TodoList = React.createClass({
     }
 });
 
-module.exports = connect(
+export default connect(
     (state) => {
         return {
             todos: state.todos
