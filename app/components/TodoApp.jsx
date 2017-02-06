@@ -4,7 +4,7 @@ const moment = require('moment');
 
 
 import TodoList from 'TodoList';
-const AddTodo = require('AddTodo');
+import AddTodo from 'AddTodo';
 const TodoSearch = require('TodoSearch');
 const TodoAPI = require('TodoAPI');
 
