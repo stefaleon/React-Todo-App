@@ -8,14 +8,17 @@ const TodoApp = require('TodoApp');
 
 const actions = require('actions');
 const store = require('configureStore').configure();
+const TodoAPI = require('TodoAPI');
 
 store.subscribe(() => {
-    console.log('New state', store.getState());
+    var state = store.getState();
+    console.log('New state', state);
+    TodoAPI.setTodos(state.todos);
 });
 
-store.dispatch(actions.addTodo('Eat a carrot'));
-store.dispatch(actions.setSearchText('carrot'));
-store.dispatch(actions.toggleShowCompleted());
+var initialTodos = TodoAPI.getTodos();
+store.dispatch(actions.addTodos(initialTodos));
+
 
 // Load foundation
 $(document).foundation();
@@ -31,8 +34,11 @@ ReactDOM.render(
     //         <IndexRoute component={TodoApp} />
     //     </Route>
     // </Router>,
-    <Provider store={store}>
-        <TodoApp/>
-    </Provider>,
-    document.getElementById('app')
+    <div className="container">
+        <h3 className="text-center">Todo App </h3>
+        <Provider store={store}>
+            <TodoApp/>
+        </Provider>
+    </div>,
+        document.getElementById('app')
 );
